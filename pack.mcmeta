@@ -1,6 +1,6 @@
 {
- "pack": {
- "pack_format": 3,
- "description": "Alicey MC Server ResourcePack"
- }
+    "pack": {
+        "pack_format": 9,
+        "description": "Alicey MC Server ResourcePack"
+    }
 }
