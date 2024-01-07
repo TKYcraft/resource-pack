@@ -20,6 +20,9 @@ jobs:
       id: sha1
       run: echo "::set-output name=sha1::$(sha1sum resource-pack.zip | awk '{print $1}')"
 
+    - name: show sha1
+      run: echo ${{ steps.sha1.outputs.sha1 }}
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
