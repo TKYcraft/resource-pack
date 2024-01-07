@@ -23,14 +23,18 @@ jobs:
     - name: show sha1
       run: echo ${{ steps.sha1.outputs.sha1 }}
 
+    - name: Get Date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M')"
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: latest
-        release_name: Release ${{ steps.sha1.outputs.sha1 }}
+        tag_name: ${{ steps.date.outputs.date }}
+        release_name: ${{ steps.sha1.outputs.sha1 }}
         draft: false
         prerelease: false
 
