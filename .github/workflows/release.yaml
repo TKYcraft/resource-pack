@@ -49,3 +49,16 @@ jobs:
         asset_name: resource-pack.zip
         asset_content_type: application/zip
         asset_sha1: ${{ steps.sha1.outputs.sha1 }}
+
+    - name: discord notification
+      uses: docker://alicey/gha2discord:latest
+      env:
+          WEBHOOK_URL: ${{ secrets.DC_WEBHOOK_URL }}
+          MESSAGE_USERNAME: "GitHub Actions"
+          MESSAGE_AVATAR_URL: ""
+          MESSAGE_AUTHORNAME: "Minecraft resource pack release"
+          MESSAGE_AUTHORICON_URL: ""
+          MESSAGE_COMMENT: "sha1: ${{ steps.sha1.outputs.sha1 }}\ndate: ${{ steps.date.outputs.date }}\n${{ steps.create_release.outputs.html_url}}"
+      with:
+          entrypoint: "python3"
+          args: "/opt/app/app.py"
