@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Zip repository
       run: zip -r resource-pack.zip . --exclude='.git*' --exclude='README.md' --exclude='LICENSE' --exclude='renovate.json'
